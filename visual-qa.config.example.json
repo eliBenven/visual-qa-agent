@@ -1,0 +1,49 @@
+{
+  "baselineDir": ".vqa/baselines",
+  "currentDir": ".vqa/current",
+  "diffDir": ".vqa/diffs",
+  "reportDir": ".vqa/reports",
+  "threshold": 0.1,
+  "flows": [
+    {
+      "name": "homepage",
+      "url": "https://example.com",
+      "viewport": { "width": 1280, "height": 720 },
+      "threshold": 0.1,
+      "ignoreRegions": [
+        { "x": 0, "y": 0, "w": 200, "h": 50 }
+      ],
+      "steps": [
+        {
+          "name": "initial-load",
+          "waitMs": 1000
+        },
+        {
+          "name": "after-scroll",
+          "click": "a[href='#more-info']",
+          "waitMs": 500
+        }
+      ]
+    },
+    {
+      "name": "login-page",
+      "url": "https://example.com/login",
+      "steps": [
+        {
+          "name": "empty-form",
+          "screenshotSelector": "form#login"
+        },
+        {
+          "name": "filled-form",
+          "type": "input[name='email']",
+          "typeText": "user@example.com",
+          "waitMs": 200
+        }
+      ]
+    }
+  ],
+  "github": {
+    "repo": "your-org/your-repo",
+    "labels": ["visual-regression", "automated"]
+  }
+}
